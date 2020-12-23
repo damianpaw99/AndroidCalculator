@@ -12,7 +12,8 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    Calculator c=new Calculator();
+    Calculator c = new Calculator();
+    boolean wasCalculated = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,25 +22,28 @@ public class MainActivity extends AppCompatActivity {
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         getSupportActionBar().hide();
         //fullscreen
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        if(savedInstanceState!=null){
+        if (savedInstanceState != null) {
             c.setExpression(new StringBuilder(savedInstanceState.getString("expression")));
             c.setLastValue(savedInstanceState.getString("lastValue"));
+            wasCalculated = savedInstanceState.getBoolean("calculate");
+
             TextView textView = (TextView) findViewById(R.id.txtOut);
-            textView.setText(c.toString());
+            textView.setText(savedInstanceState.getCharSequence("text"));
         }
     }
 
     public void addExpression(View view) {
-        Button button=(Button) findViewById(view.getId());
-        TextView out=(TextView) findViewById(R.id.txtOut);
+        Button button = (Button) findViewById(view.getId());
+        TextView out = (TextView) findViewById(R.id.txtOut);
         String value = button.getText().toString();
-        if (out.getLineCount() == 2) {
+        if (wasCalculated) {
             c.getExpression().setLength(0);
             out.setText(c.getExpression().toString());
         }
+        wasCalculated = false;
         switch (value) {
             case "0":
             case "1":
@@ -58,9 +62,9 @@ public class MainActivity extends AppCompatActivity {
             case "-":
             case "/":
             case "*":
-            case "E":
+            case "e":
             case ",":
-            case "ANS":
+            case "ans":
             case "^":
             case "!":
                 c.addExpresion(value.toLowerCase());
@@ -102,15 +106,17 @@ public class MainActivity extends AppCompatActivity {
 
     public void calculate(View view) {
         TextView textView = (TextView) findViewById(R.id.txtOut);
-        String out=c.calculate();
-        out=c.toString()+"\n"+out;
+        String out = c.calculate();
+        out = c.toString() + "\n" + out;
         textView.setText(out);
+        wasCalculated = true;
     }
 
     public void removeExpression(View view) {
         TextView textView = (TextView) findViewById(R.id.txtOut);
         c.removeExpresion();
         textView.setText(c.toString());
+        wasCalculated = false;
     }
 
     public void clear(View view) {
@@ -118,12 +124,16 @@ public class MainActivity extends AppCompatActivity {
         c.setLastValue("");
         c.getExpression().setLength(0);
         textView.setText("");
+        wasCalculated = false;
     }
 
     @Override
     protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
-        outState.putString("expression",c.getExpression().toString());
-        outState.putString("lastValue",c.getLastValue());
+        TextView textView = (TextView) findViewById(R.id.txtOut);
+        outState.putString("expression", c.getExpression().toString());
+        outState.putString("lastValue", c.getLastValue());
+        outState.putBoolean("calculate", wasCalculated);
+        outState.putCharSequence("text", textView.getText());
     }
 }

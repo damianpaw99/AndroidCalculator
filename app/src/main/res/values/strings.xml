@@ -1,3 +1,38 @@
 <resources>
-    <string name="app_name">AndroidCalculator</string>
+    <string name="app_name">Scientific Calculator</string>
+    <string name="btn_equ">=</string>
+    <string name="btn_0">0</string>
+    <string name="btn_1">1</string>
+    <string name="btn_2">2</string>
+    <string name="btn_3">3</string>
+    <string name="btn_4">4</string>
+    <string name="btn_5">5</string>
+    <string name="btn_6">6</string>
+    <string name="btn_7">7</string>
+    <string name="btn_8">8</string>
+    <string name="btn_9">9</string>
+    <string name="btn_e">e</string>
+    <string name="btn_pi">π</string>
+    <string name="btn_log">log</string>
+    <string name="btn_ln">ln</string>
+    <string name="btn_min">min</string>
+    <string name="btn_max">max</string>
+    <string name="btn_del">←</string>
+    <string name="btn_sqrt">√</string>
+    <string name="btn_pow">^</string>
+    <string name="btn_sin">sin</string>
+    <string name="btn_cos">cos</string>
+    <string name="btn_tg">tg</string>
+    <string name="btn_ctg">ctg</string>
+    <string name="btn_fac">!</string>
+    <string name="btn_plus">+</string>
+    <string name="btn_minus">-</string>
+    <string name="btn_multi">*</string>
+    <string name="btn_div">/</string>
+    <string name="btn_dot">.</string>
+    <string name="btn_coma">,</string>
+    <string name="btn_left">(</string>
+    <string name="btn_right">)</string>
+    <string name="btn_ans">ans</string>
+    <string name="btn_c">c</string>
 </resources>

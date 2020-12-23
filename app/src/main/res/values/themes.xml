@@ -14,16 +14,20 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="Button.equ" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/equbtnday</item>
-        <item name="colorPrimaryVariant">@color/equbtnday</item>
+        <item name="colorPrimary">@color/equ_btn_day</item>
+
     </style>
     <style name="Button.number" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/numberbtnday</item>
-        <item name="colorPrimaryVariant">@color/numberbtnday</item>
+        <item name="colorPrimary">@color/number_btn_day</item>
+        <item name="colorOnPrimary">@color/black</item>
     </style>
     <style name="Button.delete" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
-        <item name="colorPrimary">@color/deletebtnday</item>
-        <item name="colorPrimaryVariant">@color/deletebtnday</item>
+        <item name="colorPrimary">@color/delete_btn_day</item>
+        <item name="colorPrimaryVariant">@color/delete_btn_day</item>
+    </style>
+    <style name="Button.c" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+        <item name="colorPrimary">@color/c_btn_day</item>
+        <item name="colorOnPrimary">@color/white</item>
     </style>
 
 </resources>
